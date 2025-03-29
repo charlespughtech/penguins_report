@@ -1,0 +1,65 @@
+---
+title: "palmer_penguins_html"
+author: "Charles Pugh"
+date: "2025-03-27"
+output: html_document
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+## **Palmer Penguins: Plots & Practice Analysis**
+**Hypothesis:** Gentoo penguins have the largest flipper length of the penguin species witrhin the palmerpenguins dataset
+
+
+### Setting up my environment
+Notes: Setting up my R environment by loading the 'tidyverse' and 'palmerpenguins' packages:
+```{r Loading packages}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+### Previewing the data
+```{r Using the head function to preview the data}
+head(penguins)
+```
+
+
+```{r Using the colnames function to check the column names to see relevent data to confirm the hypothesis}
+colnames(penguins)
+```
+
+
+### Plotting the data
+
+The three charts below show a faceted comparison between flipper length and penguin species, separated and colour-coded by species type:
+
+```{r The three charts below show a faceted comparison between flipper length and penguin species both separated and colour-coded by species type}
+ggplot(data = penguins) +
+  geom_bar(mapping = aes(x = flipper_length_mm, fill = species)) +
+  facet_wrap(~species)
+```
+
+The chart below shows a comparison between flipper length and body mass color-coded for each species:
+
+```{r The chart below shows a comparison between flipper length and body mass color-coded for each species}
+
+ggplot(data = penguins) +
+
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species))
+
+```
+
+
+The chart below shows a comparison between flipper length and species and is color-coded for each species:
+
+```{r The chart below shows a faceted comparison between flipper length and penguin species, colour-coded by species type}
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x = species, y = flipper_length_mm, color = species))
+```
+
+
+### Conclusion
+It is clear that Gentoo species have the largest flippers, this confirms the hypothesis. They also have the largest body mass, suggesting a correlation between the two
